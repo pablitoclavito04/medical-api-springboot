@@ -32,7 +32,7 @@ public class Appointment {
   @Column
   private String reason;
 
-  protected Appointment() {}
+  public Appointment() {}
 
   public Long getId() { return id; }
   public Doctor getDoctor() { return doctor; }

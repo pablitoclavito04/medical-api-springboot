@@ -25,7 +25,7 @@ public class MedicalRecord {
   @Column(nullable = false)
   private Instant createdAt = Instant.now();
 
-  protected MedicalRecord() {}
+  public MedicalRecord() {}
 
   public Long getId() { return id; }
   public Appointment getAppointment() { return appointment; }

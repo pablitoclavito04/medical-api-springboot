@@ -31,7 +31,7 @@ public class Patient {
   @Column(nullable = false)
   private boolean active = true;
 
-  protected Patient() {}
+  public Patient() {}
 
   public Long getId() { return id; }
   public AppUser getUser() { return user; }

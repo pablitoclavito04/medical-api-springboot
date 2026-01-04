@@ -1,4 +1,3 @@
-
 package com.example.medical.web;
 
 import com.example.medical.dto.medical.*;
@@ -13,22 +12,24 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping("/medical-records")
 public class MedicalRecordController {
 
-  private final MedicalRecordService service;
+    private final MedicalRecordService service;
 
-  public MedicalRecordController(MedicalRecordService service) {
-    this.service = service;
-  }
+    public MedicalRecordController(MedicalRecordService service) {
+        this.service = service;
+    }
 
-  @PostMapping
-  public ResponseEntity<MedicalRecordResponse> create(@Valid @RequestBody MedicalRecordCreateRequest req) {
-    MedicalRecordResponse created = service.create(req);
-    URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/<built-in function id>")
-      .buildAndExpand(created.id()).toUri();
-    return ResponseEntity.created(location).body(created);
-  }
+    @PostMapping
+    public ResponseEntity<MedicalRecordResponse> create(@Valid @RequestBody MedicalRecordCreateRequest req) {
+        MedicalRecordResponse created = service.create(req);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(created.id())
+                .toUri();
+        return ResponseEntity.created(location).body(created);
+    }
 
-  @GetMapping("/<built-in function id>")
-  public ResponseEntity<MedicalRecordResponse> get(@PathVariable Long id) {
-    return ResponseEntity.ok(service.getById(id));
-  }
+    @GetMapping("/{id}")
+    public ResponseEntity<MedicalRecordResponse> get(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getById(id));
+    }
 }
