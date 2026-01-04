@@ -1,0 +1,418 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Pruebas de subida de nota (Jose manuel)
+meta:
+  id: wrk_fb851fc463ac4e67b76ac75a815e74c2
+  created: 1767556094436
+  modified: 1767556094436
+  description: ""
+collection:
+  - url: http://localhost:8080/auth/login
+    name: Login (obtener token)
+    meta:
+      id: req_fcf503e75b994243bd02c323bba80551
+      created: 1767556103161
+      modified: 1767556180194
+      isPrivate: false
+      description: ""
+      sortKey: -1767556103161
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "email": "admin@example.com",
+          "password": "Admin1234!"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/patients
+    name: Seguridad - Sin token
+    meta:
+      id: req_6ec05cb7c5984877afe03a95928f5e71
+      created: 1767556105736
+      modified: 1767556690821
+      isPrivate: false
+      description: ""
+      sortKey: -1767556105736
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/patients
+    name: Crear paciente
+    meta:
+      id: req_8a0ec83803c64d00899aa9cfff8e7879
+      created: 1767556108361
+      modified: 1767556847204
+      isPrivate: false
+      description: ""
+      sortKey: -1767556108361
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "firstName": "Juan",
+          "lastName": "García",
+          "dni": "12345678A",
+          "phone": "612345678"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2NzU1NjQ1OCwiZXhwIjoxNzY3NTYwMDU4fQ.ArNWpIJEmamvCD5j5pz358vbfEtHNdN_lHXWyp15FCU
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/patients
+    name: Listar pacientes
+    meta:
+      id: req_03c571a813434ccf8df2a10531e6aca7
+      created: 1767556109627
+      modified: 1767556899764
+      isPrivate: false
+      description: ""
+      sortKey: -1767556109627
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2NzU1NjQ1OCwiZXhwIjoxNzY3NTYwMDU4fQ.ArNWpIJEmamvCD5j5pz358vbfEtHNdN_lHXWyp15FCU
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/patients/1
+    name: Obtener un paciente
+    meta:
+      id: req_05052ab88d2e497b8de15506920f2a2e
+      created: 1767556111592
+      modified: 1767556954069
+      isPrivate: false
+      description: ""
+      sortKey: -1767556111592
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2NzU1NjQ1OCwiZXhwIjoxNzY3NTYwMDU4fQ.ArNWpIJEmamvCD5j5pz358vbfEtHNdN_lHXWyp15FCU
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/patients/1
+    name: Actualizar paciente
+    meta:
+      id: req_52d296c3f30f4a61b44a3fd024b94e05
+      created: 1767556979129
+      modified: 1767557044487
+      isPrivate: false
+      description: ""
+      sortKey: -1767556979129
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "firstName": "Juan",
+          "lastName": "García López",
+          "dni": "12345678A",
+          "phone": "699999999"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2NzU1NjQ1OCwiZXhwIjoxNzY3NTYwMDU4fQ.ArNWpIJEmamvCD5j5pz358vbfEtHNdN_lHXWyp15FCU
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/patients/1
+    name: Eliminar paciente
+    meta:
+      id: req_e6e823a05d7144da85c8a933a710933d
+      created: 1767556980806
+      modified: 1767557098825
+      isPrivate: false
+      description: ""
+      sortKey: -1767556980806
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2NzU1NjQ1OCwiZXhwIjoxNzY3NTYwMDU4fQ.ArNWpIJEmamvCD5j5pz358vbfEtHNdN_lHXWyp15FCU
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/appointments
+    name: Crear cita
+    meta:
+      id: req_65a969450bb34f128b3411f9a8183442
+      created: 1767556982220
+      modified: 1767563174384
+      isPrivate: false
+      description: ""
+      sortKey: -1767556982220
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "doctorId": 1,
+          "patientId": 1,
+          "startAt": "2025-06-20T11:00:00",
+          "endAt": "2025-06-20T11:30:00",
+          "reason": "Consulta general"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2NzU2MDQxNCwiZXhwIjoxNzY3NTY0MDE0fQ.DSzDiLBJLidP59_l1gdmpVdk41TdjH0CgtBg3k8Uyhw
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/appointments?doctorId=1&status=PROGRAMADA
+    name: Listar citas con filtros
+    meta:
+      id: req_035f17a752e24a78aeb67f08be04c104
+      created: 1767556984092
+      modified: 1767560672289
+      isPrivate: false
+      description: ""
+      sortKey: -1767556984092
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2NzU2MDQxNCwiZXhwIjoxNzY3NTY0MDE0fQ.DSzDiLBJLidP59_l1gdmpVdk41TdjH0CgtBg3k8Uyhw
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/patients
+    name: Listar citas sin token
+    meta:
+      id: req_2fe6e03208564ce180756fdd99e10592
+      created: 1767557369306
+      modified: 1767563611810
+      isPrivate: false
+      description: ""
+      sortKey: -1767557369306
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/patients/1
+    name: Rol incorrecton(2)
+    meta:
+      id: req_79604f7d32b24dcc96dc6d92f3c8b894
+      created: 1767557654859
+      modified: 1767561052250
+      isPrivate: false
+      description: ""
+      sortKey: -1767560986214
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRAZXhhbXBsZS5jb20iLCJyb2xlIjoiUEFDSUVOVEUiLCJpYXQiOjE3Njc1NjEwMzUsImV4cCI6MTc2NzU2NDYzNX0.24wZ6isBiJNmBleZvcM1JFYbRkyTR2FavSbwj36bst4
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/auth/login
+    name: Rol incorrecto (1)
+    meta:
+      id: req_f216fd6a83c84874826ae73713fe45c6
+      created: 1767560986114
+      modified: 1767561030978
+      isPrivate: false
+      description: ""
+      sortKey: -1767560986114
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "pat@example.com",
+          "password": "Pat1234!"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/doctors
+    name: Listar Doctores
+    meta:
+      id: req_eff10d8550c645f5b248424e1977f644
+      created: 1767563443300
+      modified: 1767563508466
+      isPrivate: false
+      description: ""
+      sortKey: -1767563443300
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.2.0
+        description: ""
+        disabled: false
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRAZXhhbXBsZS5jb20iLCJyb2xlIjoiUEFDSUVOVEUiLCJpYXQiOjE3Njc1NjEwMzUsImV4cCI6MTc2NzU2NDYzNX0.24wZ6isBiJNmBleZvcM1JFYbRkyTR2FavSbwj36bst4
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_af90fbe0923d889193b5614d1e86d09e570d197a
+    created: 1767556094441
+    modified: 1767556094441
+environments:
+  name: Base Environment
+  meta:
+    id: env_af90fbe0923d889193b5614d1e86d09e570d197a
+    created: 1767556094439
+    modified: 1767556094439
+    isPrivate: false

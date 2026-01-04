@@ -1,6 +1,6 @@
-# Evidencias - API REST Sistema Médico
+# Evidencias - API REST Sistema Médico.
 
-## Información del Proyecto
+## Información del Proyecto:
 
 | Campo | Valor |
 |-------|-------|
@@ -13,7 +13,7 @@
 
 ---
 
-## Arquitectura del Proyecto
+## Arquitectura del Proyecto:
 
 El proyecto sigue una arquitectura en capas siguiendo las mejores prácticas de Spring Boot:
 
@@ -30,16 +30,16 @@ src/main/java/com/example/medical/
 
 ### Principios aplicados:
 - **Separación de responsabilidades**: Controller → Service → Repository
-- **DTOs**: Nunca se exponen entidades JPA directamente
-- **Inyección por constructor**: Sin `@Autowired` en campos
-- **Validación**: Uso de `@Valid` + Bean Validation
-- **Manejo de errores**: `@RestControllerAdvice` centralizado
+- **DTOs**: Nunca se exponen entidades JPA directamente.
+- **Inyección por constructor**: Sin `@Autowired` en campos.
+- **Validación**: Uso de `@Valid` + Bean Validation.
+- **Manejo de errores**: `@RestControllerAdvice` centralizado.
 
 ---
 
-## Sistema de Autenticación y Roles
+## Sistema de Autenticación y Roles.
 
-### Usuarios del Sistema (Seed)
+### Usuarios del Sistema (Seed):
 
 | Email | Contraseña | Rol |
 |-------|------------|-----|
@@ -48,7 +48,7 @@ src/main/java/com/example/medical/
 | doc@example.com | Doc1234! | ROLE_MEDICO |
 | pat@example.com | Pat1234! | ROLE_PACIENTE |
 
-### Permisos por Endpoint
+### Permisos por Endpoint:
 
 | Endpoint | Roles permitidos |
 |----------|------------------|
@@ -58,7 +58,7 @@ src/main/java/com/example/medical/
 | `/medical-records/**` | ADMIN, MEDICO |
 | `/doctors/**` | ADMIN, RECEPCIONISTA, MEDICO |
 
-### Flujo de Autenticación JWT
+### Flujo de Autenticación JWT:
 1. Usuario envía credenciales a `POST /auth/login`
 2. Sistema valida y genera token JWT (válido 60 minutos)
 3. Cliente incluye token en header: `Authorization: Bearer <token>`
@@ -66,21 +66,21 @@ src/main/java/com/example/medical/
 
 ---
 
-## Funcionalidades Implementadas
+## Funcionalidades Implementadas.
 
-### CRUD Completo
-- **Pacientes**: Crear, Listar (paginado), Obtener, Actualizar, Eliminar
-- **Doctores**: Listar (paginado), Obtener por ID
-- **Citas**: Crear, Listar con filtros, Obtener, Actualizar, Eliminar
-- **Historiales Médicos**: Crear, Obtener
+### CRUD Completo:
+- **Pacientes**: Crear, Listar (paginado), Obtener, Actualizar, Eliminar.
+- **Doctores**: Listar (paginado), Obtener por ID.
+- **Citas**: Crear, Listar con filtros, Obtener, Actualizar, Eliminar.
+- **Historiales Médicos**: Crear, Obtener.
 
-### Validaciones de Negocio
-- **Solape de citas**: No permite crear citas que se solapen en el mismo doctor
+### Validaciones de Negocio:
+- **Solape de citas**: No permite crear citas que se solapen en el mismo doctor.
 - **Tiempos válidos**: `endAt` debe ser posterior a `startAt`
-- **Entidades existentes**: Verifica que doctor y paciente existan antes de crear cita
-- **DNI único**: No permite pacientes con DNI duplicado
+- **Entidades existentes**: Verifica que doctor y paciente existan antes de crear cita.
+- **DNI único**: No permite pacientes con DNI duplicado.
 
-### Códigos HTTP Correctos
+### Códigos HTTP Correctos:
 | Operación | Código | Descripción |
 |-----------|--------|-------------|
 | POST (crear) | 201 Created | + Header Location |
@@ -95,7 +95,7 @@ src/main/java/com/example/medical/
 
 ---
 
-## Suite de Tests (26 tests)
+## Suite de Tests (26 tests).
 
 ### Distribución por tipo:
 
@@ -118,9 +118,9 @@ src/main/java/com/example/medical/
 
 ---
 
-## Evidencias de Funcionamiento
+## Evidencias de Funcionamiento.
 
-### 1. Login - Autenticación JWT
+### 1. Login - Autenticación JWT:
 **Endpoint:** `POST /auth/login`
 
 **Descripción:** El sistema autentica al usuario y devuelve un token JWT válido por 60 minutos.
@@ -139,7 +139,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 2. Seguridad - Acceso sin Token
+### 2. Seguridad - Acceso sin Token:
 **Endpoint:** `GET /patients` (sin Authorization header)
 
 **Descripción:** Se verifica que los endpoints protegidos rechacen peticiones sin autenticación.
@@ -150,7 +150,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 3. CRUD Pacientes - Crear
+### 3. CRUD Pacientes - Crear:
 **Endpoint:** `POST /patients`
 
 **Descripción:** Creación de un nuevo paciente con validación de campos obligatorios y respuesta 201 + Location.
@@ -171,7 +171,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 4. CRUD Pacientes - Listar con Paginación
+### 4. CRUD Pacientes - Listar con Paginación:
 **Endpoint:** `GET /patients`
 
 **Descripción:** Listado de pacientes con paginación real usando `Page<PatientResponse>`. Incluye metadata de paginación (totalElements, totalPages, size, number).
@@ -182,7 +182,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 5. Listar Doctores
+### 5. Listar Doctores:
 **Endpoint:** `GET /doctors`
 
 **Descripción:** Listado de doctores con paginación. Endpoint implementado durante el desarrollo.
@@ -193,7 +193,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 6. Crear Cita
+### 6. Crear Cita:
 **Endpoint:** `POST /appointments`
 
 **Descripción:** Creación de cita médica validando existencia de doctor y paciente.
@@ -215,7 +215,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 7. Validación - Conflicto de Horario
+### 7. Validación - Conflicto de Horario:
 **Endpoint:** `POST /appointments`
 
 **Descripción:** El sistema detecta cuando se intenta crear una cita que solapa con otra existente del mismo doctor.
@@ -226,7 +226,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 8. Filtros en Citas
+### 8. Filtros en Citas:
 **Endpoint:** `GET /appointments?doctorId=1&status=PROGRAMADA`
 
 **Descripción:** Listado de citas con filtros combinables: doctorId, patientId, status, dateFrom, dateTo.
@@ -237,7 +237,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 9. Autorización - Rol Incorrecto
+### 9. Autorización - Rol Incorrecto:
 **Endpoint:** `DELETE /patients/1` (con token de PACIENTE)
 
 **Descripción:** Un usuario con rol PACIENTE intenta eliminar un paciente (operación solo permitida a ADMIN/RECEPCIONISTA).
@@ -248,7 +248,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 10. Validación - Doctor No Encontrado
+### 10. Validación - Doctor No Encontrado:
 **Endpoint:** `POST /appointments`
 
 **Descripción:** Se intenta crear una cita con un doctorId que no existe en el sistema.
@@ -259,7 +259,7 @@ src/main/java/com/example/medical/
 
 ---
 
-### 11. Tests - Ejecución Completa
+### 11. Tests - Ejecución Completa:
 **Comando:** `mvn test`
 
 **Descripción:** Ejecución de la suite completa de 26 tests.
@@ -272,23 +272,23 @@ src/main/java/com/example/medical/
 
 
 
-## 🚀 Instrucciones de Ejecución
+## 🚀 Instrucciones de Ejecución.
 
-### Requisitos
+### Requisitos:
 - Java 21
 - Maven 3.9+
 
-### Ejecutar aplicación
+### Ejecutar aplicación:
 ```bash
 mvn spring-boot:run
 ```
 
-### Ejecutar tests
+### Ejecutar tests:
 ```bash
 mvn test
 ```
 
-### Accesos
+### Accesos:
 - **API:** http://localhost:8080
 - **H2 Console:** http://localhost:8080/h2-console
     - JDBC URL: `jdbc:h2:mem:medicaldb`
